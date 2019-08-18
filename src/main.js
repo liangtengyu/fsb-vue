@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 
 
 //resource 配置
-var VueResource = require('vue-resource');
+import VueResource from 'vue-resource'
 Vue.use(VueResource);
 
 Vue.use(ElementUI);

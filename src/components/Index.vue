@@ -12,9 +12,12 @@
       <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
 
       <el-switch
-        v-model="remeberMe"
+        v-model="remeber"
         active-color="#13ce66"
-        inactive-color="#ff4949" title="记住我">
+        inactive-color="#ff4949"
+        active-value=true
+        inactive-value=false
+        title="记住我">
       </el-switch>
 
       <el-button type="primary" plain icon="el-icon-user" @click="login()">登陆</el-button>
@@ -29,22 +32,22 @@
       return {
         input: '',
         password: '',
-        remeberMe: true
+        remeber: true
       }
     },methods:{
       login(){
-        // this.$vue.post('localhost:9999/login',{'username':this.input,'password':this.password}).then(function (res) {
-        //   console.log(res)
-        // },function (err) {
-        //   console.log(err)
-        // })
+        this.$http.post('http://localhost:9999/login',{
+          username:this.input,
+          password:this.password,
+          rememberMe:this.remeber
+        },{emulateJSON:true}
 
-
-        this.$http.get('localhost:9999/login').then(function (res) {
-          console.log(res)
-        },function (err) {
-          console.log(err)
-        })
+        ).then((response) => {
+          console.log(response)
+        }, (response) => {
+          console.log(response)
+          // error callback
+        });
       }
     }
   }
