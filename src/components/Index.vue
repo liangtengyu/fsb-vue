@@ -6,10 +6,12 @@
       <el-input
         placeholder="请输入账号"
         v-model="input"
+        prefix-icon="el-icon-s-custom"
+        max
         clearable>
-      </el-input><i class="el-icon-s-custom" ></i>
+      </el-input>
 
-      <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
+      <el-input placeholder="请输入密码"  prefix-icon="el-icon-key" v-model="password" show-password></el-input>
 
       <el-switch
         v-model="remeber"
