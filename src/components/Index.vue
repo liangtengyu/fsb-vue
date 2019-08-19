@@ -43,9 +43,17 @@
         },{emulateJSON:true}
 
         ).then((response) => {
-          console.log(response)
+          var data=response.body
+          if (data.code == 0){
+            localStorage.setItem("fsbToken",data.data)
+            console.log("login success")
+            this.$router.push({path: '/home'})
+          }else {
+            alert("登录失败")
+          }
         }, (response) => {
           console.log(response)
+          alert("登录失败")
           // error callback
         });
       }
