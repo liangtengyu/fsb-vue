@@ -40,6 +40,7 @@
   export default {
     data() {
       return {
+       wap_sign :"",
         ruleForm: {
         input: '',
         password: '',
@@ -86,16 +87,49 @@
         });
       },
       changeR(val){
-        console.log(val)
-
-        if (val){
+        if (val == 'true'){
           this.$notify.info({
             title: 'tips',
             message: '已经记住密码，下次不用输入咯1'
           });
+        }else {
+          this.$notify.info({
+            title: 'tips',
+            message: '关闭记住密码'
+          });
         }
+    },
+    browserRedirect() {
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+    if ((bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)) {
+      this.wap_sign = "yes";
+      console.log(this.wap_sign)
+      this.$notify.info({
+        title: 'tips',
+        message: '现在正在用手机访问'
+      });
+    } else {
+      this.wap_sign = "no";
+      console.log(this.wap_sign)
+      this.$notify.info({
+        title: 'tips',
+        message: '现在正在用电脑访问'
+      });
     }
   }
+
+  },
+    mounted() {
+      this.browserRedirect()
+    }
   }
 </script>
 <style>
