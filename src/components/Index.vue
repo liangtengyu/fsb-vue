@@ -12,8 +12,12 @@
         <el-input placeholder="请输入账号" v-model="ruleForm.input" prefix-icon="el-icon-s-custom" max clearable></el-input>
       </el-form-item>
 
-      <el-form-item label="密码" class="j10" prop="password">
+      <el-form-item label="密码"   prop="password">
         <el-input placeholder="请输入密码" prefix-icon="el-icon-key" v-model="ruleForm.password" show-password></el-input>
+      </el-form-item>
+      <el-form-item label="验证"   prop="vcode">
+        <el-input placeholder="请输入验证"  maxlength="4" prefix-icon="el-icon-key" v-model="ruleForm.vcode"  style="width: 30%;position: relative;left: -50px;" ></el-input>
+      <img  src="http://localhost:9999/gifCode">
       </el-form-item>
       <div id="but">
         <el-switch v-model="ruleForm.remeber" active-color="#13ce66" active-value=true inactive-value=false
@@ -37,7 +41,7 @@
             <el-form-item label="密码" prop="password" style="position: relative; right: 30px;">
               <el-input v-model="regForm.password"></el-input>
             </el-form-item>
-              <div style=" position: relative;left: 50px;">
+              <div style=" position: relative;left: 70px;">
               <el-button type="primary"  size="mini" @click="reg('ruleForm2')">立即创建</el-button>
               <el-button size="mini" @click="resetForm('ruleForm2')">重置</el-button>
               </div>
@@ -55,10 +59,12 @@
   export default {
     data() {
       return {
+
         drawer: false,
         direction: 'rtl',
         wap_sign: "",
         ruleForm: {
+          vcode:"", //验证码
           input: '',
           password: '',
           remeber: ''
@@ -90,9 +96,6 @@
       }
     },
     methods: {
-      test(e) {
-        console.log(e)
-      },
       login(formName) {
         debugger;
         this.$refs[formName].validate((valid) => {
