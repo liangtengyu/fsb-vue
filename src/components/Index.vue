@@ -1,21 +1,26 @@
 <template>
-  <div id="div1">
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm1" label-width="100px" class="demo-ruleForm">
+
+    <div id="div1" style="
+    position: relative;
+    top: -300px;">
+      <div>
+        <img src="static/logo.png" >
+      </div>
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm1" label-width="100px" class="demo-ruleForm example">
 
       <el-form-item label="帐号" prop="input">
         <el-input placeholder="请输入账号" v-model="ruleForm.input" prefix-icon="el-icon-s-custom" max clearable></el-input>
       </el-form-item>
 
-      <el-form-item label="密码" prop="password">
+      <el-form-item label="密码" class="j10" prop="password">
         <el-input placeholder="请输入密码" prefix-icon="el-icon-key" v-model="ruleForm.password" show-password></el-input>
       </el-form-item>
       <div id="but">
-        <el-switch v-model="ruleForm.remeber" active-color="#13ce66" active-value=true inactive-value=false active-text="记住" @change="changeR($event)"></el-switch>
+        <el-switch v-model="ruleForm.remeber" active-color="#13ce66" active-value=true inactive-value=false
+                   active-text="记住" @change="changeR($event)"></el-switch>
         <el-button type="success" class="bt" plain icon="el-icon-thumb" @click="drawer = true">注册</el-button>
         <el-button type="primary" class="bt" plain icon="el-icon-user" @click="login('ruleForm1')">登陆</el-button>
       </div>
-
-
 
 
       <el-drawer
@@ -25,17 +30,17 @@
         size="65%"
         :before-close="handleClose">
         <template>
-          <el-form :model="regForm" :rules="rulereg" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
-            <el-form-item label="帐号" prop="name">
+          <el-form :model="regForm" :rules="rulereg" ref="ruleForm2" label-width="100px" class="demo-ruleForm example">
+            <el-form-item label="帐号" prop="name" style="position: relative; right: 30px;">
               <el-input v-model="regForm.name"></el-input>
             </el-form-item>
-            <el-form-item label="密码" prop="password">
+            <el-form-item label="密码" prop="password" style="position: relative; right: 30px;">
               <el-input v-model="regForm.password"></el-input>
             </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="reg('ruleForm2')">立即创建</el-button>
-              <el-button @click="resetForm('regForm')">重置</el-button>
-            </el-form-item>
+              <div style=" position: relative;left: 50px;">
+              <el-button type="primary"  size="mini" @click="reg('ruleForm2')">立即创建</el-button>
+              <el-button size="mini" @click="resetForm('ruleForm2')">重置</el-button>
+              </div>
           </el-form>
         </template>
       </el-drawer>
@@ -85,7 +90,7 @@
       }
     },
     methods: {
-      test(e){
+      test(e) {
         console.log(e)
       },
       login(formName) {
@@ -116,6 +121,10 @@
             return false;
           }
         });
+      },
+      resetForm(){
+        this.regForm.name = "";
+        this.regForm.password = "";
       },
       reg(formName) {
         debugger
@@ -211,8 +220,39 @@
     padding-left: 60px;
   }
 
-  .bt {
+
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
 
   }
 
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .example {
+      width: 50%;
+      position: relative;
+      left: 200px;
+      top: 60px;
+    }
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .example {
+      width: 60%
+    }
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .example {
+      width: 30%
+    }
+  }
 </style>
