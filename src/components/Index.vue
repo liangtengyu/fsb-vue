@@ -16,7 +16,7 @@
         <el-input placeholder="请输入密码" prefix-icon="el-icon-key" v-model="ruleForm.password" show-password></el-input>
       </el-form-item>
       <el-form-item label="验证"   prop="vcode">
-        <el-input placeholder="请输入验证码"  maxlength="4" prefix-icon="el-icon-key" v-model="ruleForm.vcode"  style="width: 30%;position: relative;left: -50px;" ></el-input>
+        <el-input placeholder="请输入验证码"  maxlength="4" prefix-icon="el-icon-key" v-model="ruleForm.vcode"  style="width: 35%;      position: relative;  left: -95px;"  ></el-input>
       <img  src="http://localhost:9999/gifCode">
       </el-form-item>
       <div id="but">
@@ -255,7 +255,9 @@
   /* Extra large devices (large laptops and desktops, 1200px and up) */
   @media only screen and (min-width: 1200px) {
     .example {
-      width: 30%
+      width: 30%;
+      position:relative;
+      padding-left: 400px;
     }
   }
 </style>
